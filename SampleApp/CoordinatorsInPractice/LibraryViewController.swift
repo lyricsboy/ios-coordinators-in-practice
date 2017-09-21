@@ -8,24 +8,52 @@
 
 import UIKit
 
-class LibraryViewController: UITableViewController {
+enum MenuItem: CustomStringConvertible {
+    case artists
+    case albums
+    case playlists
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let artistsVC = segue.destination as? ArtistsViewController {
-            artistsVC.configure(artistFetcher: FakeArtistFetcher())
+    var description: String {
+        switch self {
+        case .artists:
+            return NSLocalizedString("Artists", comment: "")
+        case .albums:
+            return NSLocalizedString("Albums", comment: "")
+        case .playlists:
+            return NSLocalizedString("Playlists", comment: "")
         }
     }
 }
 
-struct FakeArtistFetcher: ArtistFetcher {
+protocol LibraryViewControllerDelegate: class {
+    func libraryViewController(_ libraryViewController: LibraryViewController, didSelectMenuItem menuItem: MenuItem)
+}
+
+class LibraryViewController: UITableViewController, StoryboardInstantiable {
+    static let storyboardName = "Main"
     
-    func fetchArtists(completion: (Result<[Artist]>) -> Void) {
-        let artists = [
-            "The Beatles",
-            "The Doors",
-            "The Police",
-            "The Who",
-            ].map { Artist(name: $0) }
-        completion(.success(artists))
+    let menuItems: [MenuItem] = [.artists, .albums, .playlists]
+    
+    weak var delegate: LibraryViewControllerDelegate?
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuItems.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuItemCell", for: indexPath)
+        cell.textLabel?.text = menuItems[indexPath.row].description
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let menuItem = menuItems[indexPath.row]
+        delegate?.libraryViewController(self, didSelectMenuItem: menuItem)
     }
 }
+
+

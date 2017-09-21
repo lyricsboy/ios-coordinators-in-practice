@@ -8,23 +8,18 @@
 
 import UIKit
 
-enum Result<T> {
-    case success(T)
-    case failure(Error)
+protocol ArtistsViewControllerDelegate: class {
+    func artistsViewController(_ artistsViewController: ArtistsViewController, didSelectArtist artist: Artist)
 }
 
-struct Artist {
-    let name: String
-}
-
-protocol ArtistFetcher {
-    func fetchArtists(completion: (Result<[Artist]>) -> Void)
-}
-
-class ArtistsViewController: UITableViewController {
+class ArtistsViewController: UITableViewController, StoryboardInstantiable {
+    static let storyboardName = "Main"
     
-    var artistFetcher: ArtistFetcher!
-    var artistsDataSource: ArtistsDataSource? {
+    weak var delegate: ArtistsViewControllerDelegate?
+    
+    private var artistFetcher: ArtistFetcher!
+    
+    private var artistsDataSource: ArtistsDataSource? {
         didSet {
             tableView.dataSource = artistsDataSource
         }
@@ -43,6 +38,13 @@ class ArtistsViewController: UITableViewController {
                 NSLog("Error: \(error)")
             }
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let artist = artistsDataSource?.artists[indexPath.row] else {
+            return
+        }
+        delegate?.artistsViewController(self, didSelectArtist: artist)
     }
 }
 
