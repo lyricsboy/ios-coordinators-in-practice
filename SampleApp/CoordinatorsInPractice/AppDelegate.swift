@@ -8,6 +8,10 @@
 
 import UIKit
 
+struct AppDependencies: HasArtistFetcher {
+    let artistFetcher: ArtistFetcher
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -18,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         let artistFetcher = FakeArtistFetcher()
-        appCoordinator = AppCoordinator(artistFetcher: artistFetcher)
+        let appDependencies = AppDependencies(artistFetcher: artistFetcher)
+        appCoordinator = AppCoordinator(dependencies: appDependencies)
         
         let window = UIWindow()
         window.rootViewController = appCoordinator.rootViewController

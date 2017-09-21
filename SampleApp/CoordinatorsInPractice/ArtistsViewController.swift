@@ -17,7 +17,9 @@ class ArtistsViewController: UITableViewController, StoryboardInstantiable {
     
     weak var delegate: ArtistsViewControllerDelegate?
     
-    private var artistFetcher: ArtistFetcher!
+    typealias Dependencies = HasArtistFetcher
+    
+    private var dependencies: Dependencies!
     
     private var artistsDataSource: ArtistsDataSource? {
         didSet {
@@ -25,12 +27,12 @@ class ArtistsViewController: UITableViewController, StoryboardInstantiable {
         }
     }
     
-    func configure(artistFetcher: ArtistFetcher) {
-        self.artistFetcher = artistFetcher
+    func configure(dependencies: Dependencies) {
+        self.dependencies = dependencies
     }
     
     override func viewDidLoad() {
-        artistFetcher.fetchArtists { (artistsResult) in
+        dependencies.artistFetcher.fetchArtists { (artistsResult) in
             switch artistsResult {
             case .success(let artists):
                 self.artistsDataSource = ArtistsDataSource(artists: artists)

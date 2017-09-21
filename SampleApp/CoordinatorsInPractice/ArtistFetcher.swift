@@ -16,6 +16,10 @@ protocol ArtistFetcher {
     func fetchArtists(completion: (Result<[Artist]>) -> Void)
 }
 
+protocol HasArtistFetcher {
+    var artistFetcher: ArtistFetcher { get }
+}
+
 struct FakeArtistFetcher: ArtistFetcher {
     
     func fetchArtists(completion: (Result<[Artist]>) -> Void) {

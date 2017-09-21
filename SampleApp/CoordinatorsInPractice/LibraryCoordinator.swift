@@ -10,11 +10,13 @@ import UIKit
 
 class LibraryCoordinator: BaseCoordinator {
     
-    let artistFetcher: ArtistFetcher
+    typealias Dependencies = HasArtistFetcher
+    let dependencies: Dependencies
+    
     let navigationController: UINavigationController
     
-    init(artistFetcher: ArtistFetcher) {
-        self.artistFetcher = artistFetcher
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
         let libraryVC = LibraryViewController.instantiate()
         navigationController = UINavigationController(rootViewController: libraryVC)
         super.init(rootViewController: navigationController)
@@ -29,7 +31,7 @@ extension LibraryCoordinator: LibraryViewControllerDelegate {
         switch menuItem {
         case .artists:
             let artistsVC = ArtistsViewController.instantiate()
-            artistsVC.configure(artistFetcher: artistFetcher)
+            artistsVC.configure(dependencies: dependencies)
             artistsVC.delegate = self
             navigationController.pushViewController(artistsVC, animated: true)
         default:

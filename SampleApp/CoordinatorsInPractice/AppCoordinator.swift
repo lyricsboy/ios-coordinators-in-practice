@@ -10,8 +10,10 @@ import UIKit
 
 class AppCoordinator: BaseCoordinator {
     
-    init(artistFetcher: ArtistFetcher) {
-        let libraryCoordinator = LibraryCoordinator(artistFetcher: artistFetcher)
+    typealias Dependencies = HasArtistFetcher
+    
+    init(dependencies: Dependencies) {
+        let libraryCoordinator = LibraryCoordinator(dependencies: dependencies)
         let forYouCoordinator = ForYouCoordinator()
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [
