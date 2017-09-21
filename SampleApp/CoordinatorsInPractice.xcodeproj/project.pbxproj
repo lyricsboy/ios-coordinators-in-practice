@@ -15,6 +15,7 @@
 		69218E111F735B0A00C749F2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69218E101F735B0A00C749F2 /* AppCoordinator.swift */; };
 		69218E131F735B9900C749F2 /* ForYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69218E121F735B9900C749F2 /* ForYouViewController.swift */; };
 		69218E151F735BBE00C749F2 /* ForYouCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69218E141F735BBE00C749F2 /* ForYouCoordinator.swift */; };
+		69218E171F73684700C749F2 /* SongFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69218E161F73684700C749F2 /* SongFetcher.swift */; };
 		69B04BD51F6CC2FA0007F47C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B04BD41F6CC2FA0007F47C /* AppDelegate.swift */; };
 		69B04BDA1F6CC2FA0007F47C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69B04BD81F6CC2FA0007F47C /* Main.storyboard */; };
 		69B04BDC1F6CC2FA0007F47C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69B04BDB1F6CC2FA0007F47C /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		69218E101F735B0A00C749F2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		69218E121F735B9900C749F2 /* ForYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouViewController.swift; sourceTree = "<group>"; };
 		69218E141F735BBE00C749F2 /* ForYouCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouCoordinator.swift; sourceTree = "<group>"; };
+		69218E161F73684700C749F2 /* SongFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongFetcher.swift; sourceTree = "<group>"; };
 		69B04BD11F6CC2FA0007F47C /* CoordinatorsInPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoordinatorsInPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69B04BD41F6CC2FA0007F47C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69B04BD91F6CC2FA0007F47C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				69218E141F735BBE00C749F2 /* ForYouCoordinator.swift */,
 				69218E121F735B9900C749F2 /* ForYouViewController.swift */,
 				69218E0C1F73582500C749F2 /* ArtistFetcher.swift */,
+				69218E161F73684700C749F2 /* SongFetcher.swift */,
 				69218E0A1F73540D00C749F2 /* StoryboardInstantiable.swift */,
 				69218E0E1F73584400C749F2 /* Result.swift */,
 			);
@@ -234,6 +237,7 @@
 				69218E0B1F73540D00C749F2 /* StoryboardInstantiable.swift in Sources */,
 				69B04BD51F6CC2FA0007F47C /* AppDelegate.swift in Sources */,
 				69218E111F735B0A00C749F2 /* AppCoordinator.swift in Sources */,
+				69218E171F73684700C749F2 /* SongFetcher.swift in Sources */,
 				69218E0F1F73584400C749F2 /* Result.swift in Sources */,
 				69218E131F735B9900C749F2 /* ForYouViewController.swift in Sources */,
 				69218E0D1F73582500C749F2 /* ArtistFetcher.swift in Sources */,

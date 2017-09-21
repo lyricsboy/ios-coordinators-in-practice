@@ -10,7 +10,7 @@ import UIKit
 
 class LibraryCoordinator: BaseCoordinator {
     
-    typealias Dependencies = HasArtistFetcher
+    typealias Dependencies = HasArtistFetcher & HasSongFetcher
     let dependencies: Dependencies
     
     let navigationController: UINavigationController

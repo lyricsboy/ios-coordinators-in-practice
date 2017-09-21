@@ -10,7 +10,7 @@ import UIKit
 
 class AppCoordinator: BaseCoordinator {
     
-    typealias Dependencies = HasArtistFetcher
+    typealias Dependencies = HasArtistFetcher & HasSongFetcher
     
     init(dependencies: Dependencies) {
         let libraryCoordinator = LibraryCoordinator(dependencies: dependencies)
